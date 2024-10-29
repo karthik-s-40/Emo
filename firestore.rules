@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Match all documents in the 'movies' collection
+    match /movies/{movieId} {
+
+      // Allow a user to read their own movie entries
+      allow read: if request.auth != null && request.auth.uid == resource.data.userId;
+
+      // Allow a user to create a new movie entry, ensuring the data they add belongs to them
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+
+      // Allow a user to update their own movie entries
+      allow update: if request.auth != null && request.auth.uid == resource.data.userId;
+
+      // Allow a user to delete their own movie entries
+      allow delete: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+  }
+}

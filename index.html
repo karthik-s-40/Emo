@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmotiPlay - Mood-Based Recommender</title>
+    <link rel="icon" href="favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="emoji-background"></div> <!-- Animated emoji background -->
+
+    <header class="logo-container">
+        <h1 class="logo-text">EmotiPlay</h1>
+    </header>
+
+    <main class="container">
+        <!-- Login Page -->
+        <section id="login-page">
+            <h2>Login to EmotiPlay</h2>
+            <input type="email" id="login-email" placeholder="Enter your email" required aria-label="Email">
+            <input type="password" id="login-password" placeholder="Enter your password" required aria-label="Password">
+            <button id="login-btn">Login</button>
+            <p id="error-message" style="color:red;"></p>
+            <p>Don't have an account? <button id="signup-btn-toggle">Sign Up</button></p>
+        </section>
+
+        <!-- Sign Up Section -->
+        <section id="signup-page" style="display:none;">
+            <h2>Sign Up</h2>
+            <input type="email" id="signup-email" placeholder="Enter your email" required aria-label="Email">
+            <input type="password" id="signup-password" placeholder="Enter your password" required aria-label="Password">
+            <button id="signup-submit-btn">Sign Up</button>
+            <p id="signup-error-message" style="color:red;"></p>
+            <p>Already have an account? <button id="login-btn-toggle">Login</button></p>
+        </section>
+
+        <h1 id="welcome-message" style="display: none;">Welcome to EmotiPlay</h1>
+
+        <!-- Mood Detection Section -->
+        <section id="mood-detection" style="display: none;">
+            <h2>Enter mood manually or describe how you feel</h2>
+            <button id="manual-mood-btn">Enter Mood Manually</button>
+        </section>
+
+        <!-- Manual Mood Input Section -->
+        <section id="manual-mood-section" style="display:none;">
+            <h2>Enter your mood manually</h2>
+            <textarea id="manual-mood-input" placeholder="Describe your mood..." rows="3" aria-label="Manual mood input"></textarea>
+            <button id="submit-manual-mood-btn">Submit Mood</button>
+        </section>
+
+        <!-- Mood Confirmation Section (hidden by default) -->
+        <section id="confirm-mood-section" style="display:none;">
+            <p>We detected your mood as: <span id="detected-mood"></span></p>
+            <button id="confirm-mood-btn">Yes, this is correct</button>
+            <button id="reject-mood-btn">No, this is wrong</button>
+        </section>
+
+        <!-- Manual Mood Input Section (hidden by default) -->
+        <section id="manual-mood-section" style="display:none;">
+            <h2>Enter your mood manually</h2>
+            <input type="text" id="manual-mood-input" placeholder="Enter your mood..." aria-label="Manual mood input">
+            <button id="submit-manual-mood-btn">Submit Mood</button>
+        </section>
+
+        <!-- Choose between Songs or Videos (hidden by default) -->
+        <section id="choice-section" style="display:none;">
+            <h2>What would you like to explore?</h2>
+            <button id="choose-songs-btn">Spotify Songs</button>
+            <button id="choose-videos-btn">YouTube Videos</button>
+        </section>
+
+        <!-- Song and Video Results (hidden by default) -->
+        <section id="results-section" style="display:none;">
+            <h2>Recommendations:</h2>
+            <ul id="results-list"></ul>
+            <div id="pagination-songs" style="display: none;">
+                <button id="next-songs-btn">Load More Songs</button>
+            </div>
+            <div id="pagination-videos" style="display: none;">
+                <button id="next-videos-btn">Load More Videos</button>
+            </div>
+        </section>
+
+        <!-- Embeds for YouTube & Spotify players -->
+        <div class="player-container" style="display:none;">
+            <iframe id="youtube-player" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+            <iframe id="spotify-player" src="" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+    </main>
+
+    <script type="module" src="signup.js"></script>
+</body>
+</html>
+
